@@ -4,7 +4,7 @@
       <mat-card-title>Login</mat-card-title>
     </mat-card-header>
     <mat-card-content>
-      <form class="example-form">
+      <!--<form class="example-form">
         <table class="example-full-width" cellspacing="0">
           <tr>
             <td>
@@ -18,10 +18,33 @@
             <input matInput placeholder="Password" [(ngModel)]="password"type="password" name="password" required>
           </mat-form-field></td>
         </tr></table>
-      </form>
+      </form>-->
+      <form [formGroup]="loginForm" (ngSubmit)="login()">
+        <div class="form-group clearfix" >
+            <label for="userid" class="col-md-3 col-sm-5 col-xs-12">Userid</label>
+            <div class="col-md-9 col-sm-7 col-xs-12">
+                <input type="text" class="form-control" formControlName="userid" />
+                <div *ngIf="f.userid.errors" class="help-block">
+                      <div *ngIf="f.userid.errors.required">Userid is required</div>
+                </div>
+            </div>
+        </div>
+        <div class="form-group clearfix" >
+          <label for="password" class="col-md-3 col-sm-5 col-xs-12">Password</label>
+          <div class="col-md-9 col-sm-7 col-xs-12">
+              <input type="password" class="form-control" formControlName="password"/>
+              <div *ngIf="f.password.errors" class="help-block">
+                      <div *ngIf="f.password.errors.required">Password is required</div>
+              </div>
+          </div>
+        </div>
+        <div class="col-xs-12 form-group text-right">
+          <button class="btn btn-success" type="submit">Login</button>
+        </div>
+    </form>
       <!--<mat-spinner [style.display]="showSpinner ? 'block' : 'none'"></mat-spinner>-->
     </mat-card-content>
-    <mat-card-actions>
+    <!--<mat-card-actions>
       <button mat-raised-button (click)="login()" color="primary">Login</button>
-    </mat-card-actions>
+    </mat-card-actions>-->
   </mat-card>
