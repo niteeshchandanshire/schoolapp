@@ -23,23 +23,23 @@
         <div class="form-group clearfix" >
             <label for="userid" class="col-md-3 col-sm-5 col-xs-12">Userid</label>
             <div class="col-md-9 col-sm-7 col-xs-12">
-                <input type="text" class="form-control" formControlName="userid" />
-                <div *ngIf="f.userid.errors" class="help-block">
-                      <div *ngIf="f.userid.errors.required">Userid is required</div>
-                </div>
+                <input type="text" class="form-control" [formControlName]="'userid'" />
+                <div *ngIf="loginForm.get('userid').dirty && loginForm.get('userid').errors?.required">
+                    User Id is required
+            </div>
             </div>
         </div>
         <div class="form-group clearfix" >
           <label for="password" class="col-md-3 col-sm-5 col-xs-12">Password</label>
           <div class="col-md-9 col-sm-7 col-xs-12">
-              <input type="password" class="form-control" formControlName="password"/>
-              <div *ngIf="f.password.errors" class="help-block">
-                      <div *ngIf="f.password.errors.required">Password is required</div>
+              <input type="password" class="form-control" [formControlName]="'password'"/>
+              <div *ngIf="loginForm.get('password').dirty && loginForm.get('password').errors?.required">
+                      Password is required
               </div>
           </div>
         </div>
         <div class="col-xs-12 form-group text-right">
-          <button class="btn btn-success" type="submit">Login</button>
+          <button class="btn btn-success" [disabled]="!loginForm.valid" type="submit">Login</button>
         </div>
     </form>
       <!--<mat-spinner [style.display]="showSpinner ? 'block' : 'none'"></mat-spinner>-->

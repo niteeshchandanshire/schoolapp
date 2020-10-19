@@ -11,7 +11,12 @@ import {AuthService} from '../auth.service';
 })
 export class LoginComponent implements OnInit {
 
-  constructor(private formBuilder: FormBuilder,private router: Router, public authService: AuthService) { }
+  constructor(private formBuilder: FormBuilder,private router: Router, public authService: AuthService) {
+    this.loginForm = this.formBuilder.group({
+      userid: ['', Validators.required],
+      password: ['', Validators.required]
+    });
+   }
 
   
   model: User = { userid: "admin", password: "admin123" };
@@ -20,10 +25,7 @@ export class LoginComponent implements OnInit {
   returnUrl: string;
 
   ngOnInit(): void {
-    this.loginForm = this.formBuilder.group({
-      userid: ['', Validators.required],
-      password: ['', Validators.required]
-    });
+    
     this.returnUrl = '/home';
     this.authService.logout();
   }
@@ -43,12 +45,14 @@ export class LoginComponent implements OnInit {
     if(this.f.userid.value == this.model.userid && this.f.password.value == this.model.password){
       console.log("Login successful");
       //this.authService.authLogin(this.model);
+      localStorage.setItem('isLoggedInStatus', "true");
       localStorage.setItem('isLoggedIn', "true");
       localStorage.setItem('token', this.f.userid.value);
       this.router.navigate([this.returnUrl]);
     }
     else{
       this.message = "Please check your userid and password";
+      alert('Please enter corect userId and Password');
     }
   }    
   }

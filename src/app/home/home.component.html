@@ -3,5 +3,15 @@
     <div class="col-md-6 col-md-offset-3 loginBox">
         Welcome,  {{id}}
         <!--<a href="javascript:void(0);" (click)="logout()">Logout</a>-->
+        <p>{{bodyText}}</p>
+<!--<button (click)="openModal('custom-modal-1')">Open Modal</button>-->
+<button (click)="openDialog()">Open Modal</button>
+        <!--<button type="button" class="btn btn-primary" (click)="openModal(editProfileModal, user)">Edit</button>-->
     </div>
 </div>
+
+<!--<jw-modal id="custom-modal-1">
+    <h1>A Custom Modal!</h1>
+    <p>Home page text: <input type="text" [(ngModel)]="bodyText" /></p>
+    <button (click)="closeModal('custom-modal-1');">Close</button>
+</jw-modal>-->

@@ -16,9 +16,11 @@ export class AuthService {
   constructor( private router: Router) { }
 
   logout(): void {
-    localStorage.setItem('isLoggedIn', "false");
+   
     this.loggedIn.next(false);
     localStorage.removeItem('token');
+    localStorage.removeItem('isLoggedInStatus');
+    localStorage.removeItem('isLoggedIn');
     this.router.navigate(['/login']);
   } 
 

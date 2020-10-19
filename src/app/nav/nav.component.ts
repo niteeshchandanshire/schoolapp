@@ -9,10 +9,14 @@ import { Router } from '@angular/router';
 })
 export class NavComponent implements OnInit {
   id: string;
+  isLogged: string;
+  loggedStatus: boolean;
   constructor(private router: Router,public authService: AuthService) { }
 
   ngOnInit(): void {
     this.id = localStorage.getItem('token');
+    //this.isLogged = localStorage.getItem('isLoggedInStatus');
+    //this.loggedStatus = this.authService.;
   }
   logout(): void {
     console.log("Logout"); 
@@ -22,7 +26,7 @@ export class NavComponent implements OnInit {
 
   public isLoggedIn(): boolean{
     let status = false;
-    if( localStorage.getItem('isLoggedIn') == "true"){
+    if( localStorage.getItem('isLoggedInStatus') == "true"){
       status = true;
     }
     else{
